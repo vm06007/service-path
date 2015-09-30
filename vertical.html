@@ -1,0 +1,157 @@
+
+<!doctype html>
+<html>
+<head>
+  <title>Network | Images</title>
+
+  <style type="text/css">
+    html, body {
+      height: 100%;
+    }
+    #mynetwork {
+      width: 100%;
+      height: 90%;
+      border: 1px solid lightgray;
+    }
+  </style>
+
+  <script src="jquery.min.js"></script>
+  <script type="text/javascript" src="vis.js"></script>
+  <link href="vis.css" rel="stylesheet" type="text/css" />
+
+  <script type="text/javascript">
+
+  var json = {"msec":5872,"count":1,"data":[{"nodes":[{"node_id":70868,"node_type":{"node_type_id":1,"node_type":"device"},"service":{"service_id":7,"service_name":"Animal Planet HD East"},"device":{"device_id":10,"device_name":"P2-604-33","vendor_model":{"vendor_model_id":1,"vendor_model":"4Caster","vendor_model_desc":"Live Video Encoder","device_code":{"device_code_id":null,"device_code":null},"vendor":{"vendor_id":2,"vendor_name":"Envivio"}},"device_roles":[{"device_role_id":14,"device_role":"Encoder"}],"location":{"rack":"04","rack_elevation":"33","row":"6","pod":"2","site":{"site_id":82,"site_name":"Peakview - Deprecated entry see ENWDCOCD","clli_code":"DNVRCODC","address":"11011 E Peakview Ave","city":"Centennial","state":"CO","zip_code":"80111","lat":"39.598966","lng":"-104.8601149","market":"TNO"}}}},{"node_id":73955,"node_type":{"node_type_id":1,"node_type":"device"},"service":{"service_id":7,"service_name":"Animal Planet HD East"},"device":{"device_id":1998,"device_name":"dnvrco01-hp-jtp0011","vendor_model":{"vendor_model_id":99,"vendor_model":"Halo","vendor_model_desc":"Halo Live and JITP Packagers","device_code":{"device_code_id":null,"device_code":null},"vendor":{"vendor_id":2,"vendor_name":"Envivio"}},"device_roles":[{"device_role_id":76,"device_role":"Packager"}],"location":{"rack":"06","rack_elevation":"36","row":"G","pod":"3","site":{"site_id":1,"site_name":"Peakview","clli_code":"PKVWCO","address":"11011 E Peakview Ave","city":"Centennial","state":"CO","zip_code":"80111","lat":"39.5792","lng":"-104.8769","market":"TNO"}}}},{"node_id":74044,"node_type":{"node_type_id":1,"node_type":"device"},"service":{"service_id":7,"service_name":"Animal Planet HD East"},"device":{"device_id":1999,"device_name":"dnvrco01-hp-jtp0012","vendor_model":{"vendor_model_id":99,"vendor_model":"Halo","vendor_model_desc":"Halo Live and JITP Packagers","device_code":{"device_code_id":null,"device_code":null},"vendor":{"vendor_id":2,"vendor_name":"Envivio"}},"device_roles":[{"device_role_id":76,"device_role":"Packager"}],"location":{"rack":"08","rack_elevation":"36","row":"G","pod":"3","site":{"site_id":1,"site_name":"Peakview","clli_code":"PKVWCO","address":"11011 E Peakview Ave","city":"Centennial","state":"CO","zip_code":"80111","lat":"39.5792","lng":"-104.8769","market":"TNO"}}}},{"node_id":76201,"node_type":{"node_type_id":1,"node_type":"device"},"service":{"service_id":7,"service_name":"Animal Planet HD East"},"device":{"device_id":6448,"device_name":"enwdcocd-ci-dsa-0006","vendor_model":{"vendor_model_id":331,"vendor_model":"DCM9902","vendor_model_desc":"DCM9902","device_code":{"device_code_id":"1","device_code":"dcm"},"vendor":{"vendor_id":1,"vendor_name":"Cisco"}},"device_roles":[{"device_role_id":67,"device_role":"Source Selection"}],"location":{"rack":"","rack_elevation":"","row":"","pod":"","site":{"site_id":3418,"site_name":"NDC West","clli_code":"ENWDCOCD","address":"11011 E Peakview Ave","city":"Centennial","state":"CO","zip_code":"80111","lat":"39.598976","lng":"-104.860134","market":"TNO"}}}},{"node_id":81870,"node_type":{"node_type_id":2,"node_type":"multicast_group"},"service":{"service_id":7,"service_name":"Animal Planet HD East"},"multicast_group":{"multicast_group_id":34760,"multicast":"239.194.18.141","source":"69.76.86.73","port":12000,"encoded_master":false,"ip_net":{"ip_net_id":2,"ip_net_name":"Peakview"}}},{"node_id":81871,"node_type":{"node_type_id":2,"node_type":"multicast_group"},"service":{"service_id":7,"service_name":"Animal Planet HD East"},"multicast_group":{"multicast_group_id":36206,"multicast":"239.194.18.141","source":"69.76.86.72","port":12000,"encoded_master":false,"ip_net":{"ip_net_id":2,"ip_net_name":"Peakview"}}},{"node_id":84496,"node_type":{"node_type_id":2,"node_type":"multicast_group"},"service":{"service_id":7,"service_name":"Animal Planet HD East"},"multicast_group":{"multicast_group_id":37051,"multicast":"239.195.82.209","source":"69.76.96.10","port":12000,"encoded_master":false,"ip_net":{"ip_net_id":2,"ip_net_name":"Peakview"}}},{"node_id":84559,"node_type":{"node_type_id":2,"node_type":"multicast_group"},"service":{"service_id":7,"service_name":"Animal Planet HD East"},"multicast_group":{"multicast_group_id":32191,"multicast":"239.195.82.209","source":"69.76.86.72","port":12000,"encoded_master":false,"ip_net":{"ip_net_id":2,"ip_net_name":"Peakview"}}}],"links":[{"link_id":59709,"cost":510,"src_node_id":70868,"dst_node_id":81870,"status":"active","src_port":null,"dst_port":null,"detail":{"link_id":59709,"compression":"MPEG4","definition":"HD","bitrate":null,"ts_type":null,"program_id":1,"compression":{"compression":"MPEG4","description":"MPEG4"},"definition":{"definition":"HD","description":"High Definition"}},"routing_type":{"routing_type_id":1,"routing_type":"Multicast"}},{"link_id":59710,"cost":500,"src_node_id":70868,"dst_node_id":81871,"status":"active","src_port":null,"dst_port":null,"detail":{"link_id":59710,"compression":"MPEG4","definition":"HD","bitrate":null,"ts_type":null,"program_id":1,"compression":{"compression":"MPEG4","description":"MPEG4"},"definition":{"definition":"HD","description":"High Definition"}},"routing_type":{"routing_type_id":1,"routing_type":"Multicast"}},{"link_id":59711,"cost":40,"src_node_id":70868,"dst_node_id":84559,"status":"no","src_port":null,"dst_port":null,"detail":{"link_id":59711,"compression":"MPEG4","definition":"HD","bitrate":null,"ts_type":null,"program_id":1,"compression":{"compression":"MPEG4","description":"MPEG4"},"definition":{"definition":"HD","description":"High Definition"}},"routing_type":{"routing_type_id":1,"routing_type":"Multicast"}},{"link_id":64835,"cost":100,"src_node_id":76201,"dst_node_id":84496,"status":"active","src_port":null,"dst_port":null,"detail":{"link_id":64835,"compression":"MPEG4","definition":"HD","bitrate":null,"ts_type":null,"program_id":1,"compression":{"compression":"MPEG4","description":"MPEG4"},"definition":{"definition":"HD","description":"High Definition"}},"routing_type":{"routing_type_id":1,"routing_type":"Multicast"}},{"link_id":66641,"cost":100,"src_node_id":84496,"dst_node_id":70868,"status":"active","src_port":null,"dst_port":null,"detail":{"link_id":66641,"compression":"MPEG4","definition":"HD","bitrate":null,"ts_type":null,"program_id":1,"compression":{"compression":"MPEG4","description":"MPEG4"},"definition":{"definition":"HD","description":"High Definition"}},"routing_type":{"routing_type_id":1,"routing_type":"Multicast"}},{"link_id":68984,"cost":510,"src_node_id":81870,"dst_node_id":74044,"status":"active","src_port":null,"dst_port":null,"detail":{"link_id":68984,"compression":"MPEG4","definition":"HD","bitrate":null,"ts_type":null,"program_id":1,"compression":{"compression":"MPEG4","description":"MPEG4"},"definition":{"definition":"HD","description":"High Definition"}},"routing_type":{"routing_type_id":1,"routing_type":"Multicast"}},{"link_id":68985,"cost":510,"src_node_id":81870,"dst_node_id":73955,"status":"active","src_port":null,"dst_port":null,"detail":{"link_id":68985,"compression":"MPEG4","definition":"HD","bitrate":null,"ts_type":null,"program_id":1,"compression":{"compression":"MPEG4","description":"MPEG4"},"definition":{"definition":"HD","description":"High Definition"}},"routing_type":{"routing_type_id":1,"routing_type":"Multicast"}},{"link_id":68986,"cost":500,"src_node_id":81871,"dst_node_id":74044,"status":"active","src_port":null,"dst_port":null,"detail":{"link_id":68986,"compression":"MPEG4","definition":"HD","bitrate":null,"ts_type":null,"program_id":1,"compression":{"compression":"MPEG4","description":"MPEG4"},"definition":{"definition":"HD","description":"High Definition"}},"routing_type":{"routing_type_id":1,"routing_type":"Multicast"}},{"link_id":68987,"cost":500,"src_node_id":81871,"dst_node_id":73955,"status":"active","src_port":null,"dst_port":null,"detail":{"link_id":68987,"compression":"MPEG4","definition":"HD","bitrate":null,"ts_type":null,"program_id":1,"compression":{"compression":"MPEG4","description":"MPEG4"},"definition":{"definition":"HD","description":"High Definition"}},"routing_type":{"routing_type_id":1,"routing_type":"Multicast"}}]}]}
+
+    function sortResults(prop, asc) {
+        json = json.sort(function(a, b) {
+            if (asc) return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
+            else return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
+        });
+        showResults();
+    }
+
+    //sortResults('cost', true);
+
+    var nodes = null;
+    var edges = null;
+    var network = null;
+
+    var DIR = 'img/refresh-cl/';
+    var EDGE_LENGTH_MAIN = 340;
+    var EDGE_LENGTH_SUB = 150;
+
+
+
+    // Called when the Visualization API is loaded.
+    function draw() {
+      // Create a data table with nodes.
+      nodes = [];
+
+      // Create a data table with links.
+      edges = [];
+      $.each(json.data[0].nodes, function(i, item) {
+          //graphJSON.nodes.push(item.node_id)
+          var type = item.device || item.service;
+          console.log(item)
+          //var name = type.device_name || type.service_name;
+          var name = type.device_roles || 'Multicast Group';
+          var img = name
+          var info = name
+          if(name != 'Multicast Group') {
+            name = name[0].device_role
+            img = name
+            info = type.device_name
+          }
+          else {
+            img = name
+            name = item.multicast_group.multicast
+
+          }
+          name = name.replace(' ', ' ');
+          if(name != 'Packager') {
+            name = name.replace(' ', ' ') + '\n('+info+')';
+          }
+          var obj = {id: item.node_id, label: name, image: DIR + img + '.png', title: info, shape: 'image'}
+          nodes.push(obj);
+      });    
+
+      $.each(json.data[0].links, function(i, item) {
+          var arr = [item.src_node_id, item.dst_node_id]
+          var color = 'black'
+          var dashes = false
+          if(item.status != 'active') {
+            color = 'red'
+            dashes = true
+          }
+          edges.push({from: item.src_node_id, to: item.dst_node_id, arrows:'to', color: color, dashes: dashes, length: EDGE_LENGTH_MAIN});
+          //graphJSON.edges.push(arr)
+          console.log(item);
+      });
+
+      // nodes.push({id: 1, label: 'Main', image: DIR + 'Network-Pipe-icon.png', shape: 'image'});
+      // nodes.push({id: 2, label: 'Office', image: DIR + 'Network-Pipe-icon.png', shape: 'image'});
+      // nodes.push({id: 3, label: 'Wireless', image: DIR + 'Network-Pipe-icon.png', shape: 'image'});
+      // edges.push({from: 1, to: 2, length: EDGE_LENGTH_MAIN});
+      // edges.push({from: 1, to: 3, length: EDGE_LENGTH_MAIN});
+
+      // for (var i = 4; i <= 7; i++) {
+      //   nodes.push({id: i, label: 'Computer', image: DIR + 'Hardware-My-Computer-3-icon.png', shape: 'image'});
+      //   edges.push({from: 2, to: i, length: EDGE_LENGTH_SUB});
+      // }
+
+      // nodes.push({id: 101, label: 'Printer', image: DIR + 'Hardware-Printer-Blue-icon.png', shape: 'image'});
+      // edges.push({from: 2, to: 101, length: EDGE_LENGTH_SUB});
+
+      // nodes.push({id: 102, label: 'Laptop', image: DIR + 'Hardware-Laptop-1-icon.png', shape: 'image'});
+      // edges.push({from: 3, to: 102, length: EDGE_LENGTH_SUB});
+
+      // nodes.push({id: 103, label: 'network drive', image: DIR + 'Network-Drive-icon.png', shape: 'image'});
+      // edges.push({from: 1, to: 103, length: EDGE_LENGTH_SUB});
+
+      // nodes.push({id: 104, label: 'Internet', image: DIR + 'System-Firewall-2-icon.png', shape: 'image'});
+      // edges.push({from: 1, to: 104, length: EDGE_LENGTH_SUB});
+
+      // for (var i = 200; i <= 201; i++ ) {
+      //   nodes.push({id: i, label: 'Smartphone', image: DIR + 'Hardware-My-PDA-02-icon.png', shape: 'image'});
+      //   edges.push({from: 3, to: i, length: EDGE_LENGTH_SUB});
+      // }
+
+      // create a network
+      var container = document.getElementById('mynetwork');
+      var data = {
+        nodes: nodes,
+        edges: edges
+      };
+      var options = {
+        configure: {
+          filter: 'nodes,edges'
+        },
+        layout:{
+        improvedLayout: true,
+        randomSeed:16,
+        hierarchical: { levelSeparation: 170,
+                        sortMethod: 'directed',          
+                        direction: 'UD'
+                    }},
+        nodes: {
+          size:32,
+        color: {
+            border: '#222222',
+            background: '#666666'
+          },
+          font:{color:'#000'}
+        },
+        edges: {
+          /*color: '#AC53C9'*/
+        }
+      };
+      network = new vis.Network(container, data, options);
+    }
+  </script>
+
+<body onload="draw()" style="margin:0px;">
+<div id="mynetwork" style="margin-top:-10px;"></div>
+
+</body>
+</html>
