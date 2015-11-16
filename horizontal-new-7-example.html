@@ -1,0 +1,292 @@
+
+<!doctype html>
+<html>
+<head>
+  <title>Network | Images</title>
+
+  <style type="text/css">
+    html, body {
+      height: 100%;
+    }
+    #controls {
+      position: absolute;
+      top:10px;
+      left:20px;
+    }
+    #mynetwork {
+      width: 100%;
+      height: 100%;
+      border: 1px solid lightgray;
+    }
+
+    select {
+      background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50px' height='50px'><polyline points='46.139,15.518 25.166,36.49 4.193,15.519'/></svg>");
+      background-color:#3498DB;
+      background-repeat:no-repeat;
+      background-position: right 8px top 9px;
+      background-size: 13px 16px;
+      color:white;
+      padding:10px;
+      width:auto;
+      font-family:arial,tahoma;
+      font-size:13px;
+      font-weight:bold;
+      color:#fff;
+      text-align:center;
+      text-shadow:0 -1px 0 rgba(1, 1, !, 0.25);
+      border-radius:3px;
+      -webkit-border-radius:3px;
+      -webkit-appearance: none;
+      border:0;
+      outline:0;
+      -webkit-transition:0.3s ease all;
+    	   -moz-transition:0.3s ease all;
+    	    -ms-transition:0.3s ease all;
+    	     -o-transition:0.3s ease all;
+    	        transition:0.3s ease all;
+    }
+
+    #blue {
+      margin-top: -40px !important;
+      margin-left: 50px;
+      position: absolute;
+      background-color:rgba(52, 127, 219, 0.64);
+    }
+
+    #blue2 {
+      margin-top: -40px !important;
+      margin-left: 140px;
+      position: absolute;
+      background-color:rgba(52, 127, 219, 0.64);
+    }
+
+    #blue:hover {
+      background-color:#2980B9;
+    }
+
+    #blue2:hover {
+      background-color:#2980B9;
+    }
+
+    select:focus, select:active {
+      border:0;
+      outline:0;
+    }
+
+    img.rotated {
+        transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+
+    }
+
+  </style>
+
+  <script src="jquery.min.js"></script>
+  <script type="text/javascript" src="vis.min.js"></script>
+  <link href="vis.min.css" rel="stylesheet" type="text/css" />
+
+  <script type="text/javascript">
+  var init = 0;
+  var net = {};
+  var json = {"msec":2360,"count":1,"data":[{"nodes":[{"node_id":70533,"node_type":{"node_type_id":2,"node_type":"multicast_group"},"service":{"service_id":7,"service_name":"Animal Planet HD East"},"multicast_group":{"multicast_group_id":31481,"multicast":"239.195.0.61","source":"76.52.236.175","port":2061,"encoded_master":true,"ip_net":{"ip_net_id":1,"ip_net_name":"NVT"}}},{"node_id":70546,"node_type":{"node_type_id":2,"node_type":"multicast_group"},"service":{"service_id":7,"service_name":"Animal Planet HD East"},"multicast_group":{"multicast_group_id":31571,"multicast":"239.195.0.61","source":"24.164.223.227","port":2061,"encoded_master":true,"ip_net":{"ip_net_id":1,"ip_net_name":"NVT"}}},{"node_id":70868,"node_type":{"node_type_id":1,"node_type":"device"},"service":{"service_id":7,"service_name":"Animal Planet HD East"},"device":{"device_id":10,"device_name":"P2-604-33","vendor_model":{"vendor_model_id":1,"vendor_model":"4Caster","vendor_model_desc":"Live Video Encoder","device_code":{"device_code_id":null,"device_code":null},"vendor":{"vendor_id":2,"vendor_name":"Envivio"}},"device_roles":[{"device_role_id":14,"device_role":"Encoder"}],"location":{"rack":"04","rack_elevation":"33","row":"6","pod":"2","site":{"site_id":82,"site_name":"Peakview - Deprecated entry see ENWDCOCD","clli_code":"DNVRCODC","address":"11011 E Peakview Ave","city":"Centennial","state":"CO","zip_code":"80111","lat":"39.598966","lng":"-104.8601149","market":"TNO"}}}},{"node_id":73955,"node_type":{"node_type_id":1,"node_type":"device"},"service":{"service_id":7,"service_name":"Animal Planet HD East"},"device":{"device_id":1998,"device_name":"dnvrco01-hp-jtp0011","vendor_model":{"vendor_model_id":99,"vendor_model":"Halo","vendor_model_desc":"Halo Live and JITP Packagers","device_code":{"device_code_id":null,"device_code":null},"vendor":{"vendor_id":2,"vendor_name":"Envivio"}},"device_roles":[{"device_role_id":76,"device_role":"Packager"}],"location":{"rack":"06","rack_elevation":"36","row":"G","pod":"3","site":{"site_id":1,"site_name":"Peakview","clli_code":"PKVWCO","address":"11011 E Peakview Ave","city":"Centennial","state":"CO","zip_code":"80111","lat":"39.5792","lng":"-104.8769","market":"TNO"}}}},{"node_id":74044,"node_type":{"node_type_id":1,"node_type":"device"},"service":{"service_id":7,"service_name":"Animal Planet HD East"},"device":{"device_id":1999,"device_name":"dnvrco01-hp-jtp0012","vendor_model":{"vendor_model_id":99,"vendor_model":"Halo","vendor_model_desc":"Halo Live and JITP Packagers","device_code":{"device_code_id":null,"device_code":null},"vendor":{"vendor_id":2,"vendor_name":"Envivio"}},"device_roles":[{"device_role_id":76,"device_role":"Packager"}],"location":{"rack":"08","rack_elevation":"36","row":"G","pod":"3","site":{"site_id":1,"site_name":"Peakview","clli_code":"PKVWCO","address":"11011 E Peakview Ave","city":"Centennial","state":"CO","zip_code":"80111","lat":"39.5792","lng":"-104.8769","market":"TNO"}}}},{"node_id":76201,"node_type":{"node_type_id":1,"node_type":"device"},"service":{"service_id":7,"service_name":"Animal Planet HD East"},"device":{"device_id":6448,"device_name":"enwdcocd-ci-dsa-0006","vendor_model":{"vendor_model_id":331,"vendor_model":"DCM9902","vendor_model_desc":"DCM9902","device_code":{"device_code_id":1,"device_code":"dcm"},"vendor":{"vendor_id":1,"vendor_name":"Cisco"}},"device_roles":[{"device_role_id":67,"device_role":"Source Selection"}],"location":{"rack":"","rack_elevation":"","row":"","pod":"","site":{"site_id":3418,"site_name":"NDC West","clli_code":"ENWDCOCD","address":"11011 E Peakview Ave","city":"Centennial","state":"CO","zip_code":"80111","lat":"39.598976","lng":"-104.860134","market":"TNO"}}}},{"node_id":77060,"node_type":{"node_type_id":1,"node_type":"device"},"service":{"service_id":7,"service_name":"Animal Planet HD East"},"device":{"device_id":23462,"device_name":"SAN see notes below","vendor_model":{"vendor_model_id":124,"vendor_model":"DSR-4410MD","vendor_model_desc":"DSR-4410MD","device_code":{"device_code_id":null,"device_code":null},"vendor":{"vendor_id":6,"vendor_name":"Motorola"}},"device_roles":[{"device_role_id":3,"device_role":"IRD"}],"location":{"rack":"","rack_elevation":"","row":"","pod":"","site":{"site_id":82,"site_name":"Peakview - Deprecated entry see ENWDCOCD","clli_code":"DNVRCODC","address":"11011 E Peakview Ave","city":"Centennial","state":"CO","zip_code":"80111","lat":"39.598966","lng":"-104.8601149","market":"TNO"}}}},{"node_id":81870,"node_type":{"node_type_id":2,"node_type":"multicast_group"},"service":{"service_id":7,"service_name":"Animal Planet HD East"},"multicast_group":{"multicast_group_id":34760,"multicast":"239.194.18.141","source":"69.76.86.73","port":12000,"encoded_master":false,"ip_net":{"ip_net_id":2,"ip_net_name":"Peakview"}}},{"node_id":81871,"node_type":{"node_type_id":2,"node_type":"multicast_group"},"service":{"service_id":7,"service_name":"Animal Planet HD East"},"multicast_group":{"multicast_group_id":36206,"multicast":"239.194.18.141","source":"69.76.86.72","port":12000,"encoded_master":false,"ip_net":{"ip_net_id":2,"ip_net_name":"Peakview"}}},{"node_id":84496,"node_type":{"node_type_id":2,"node_type":"multicast_group"},"service":{"service_id":7,"service_name":"Animal Planet HD East"},"multicast_group":{"multicast_group_id":37051,"multicast":"239.195.82.209","source":"69.76.96.10","port":12000,"encoded_master":false,"ip_net":{"ip_net_id":2,"ip_net_name":"Peakview"}}},{"node_id":84559,"node_type":{"node_type_id":2,"node_type":"multicast_group"},"service":{"service_id":7,"service_name":"Animal Planet HD East"},"multicast_group":{"multicast_group_id":32191,"multicast":"239.195.82.209","source":"69.76.86.72","port":12000,"encoded_master":false,"ip_net":{"ip_net_id":2,"ip_net_name":"Peakview"}}}],"links":[{"link_id":59709,"cost":510,"src_node_id":70868,"dst_node_id":81870,"status":"active","src_port":null,"dst_port":null,"detail":{"compression":"MPEG4","definition":"HD","bitrate":null,"program_id":1,"sdt_name":null,"compression":{"compression":"MPEG4","description":"MPEG4"},"definition":{"definition":"HD","description":"High Definition"},"ts_type":null},"routing_type":{"routing_type_id":1,"routing_type":"Multicast"}},{"link_id":59710,"cost":500,"src_node_id":70868,"dst_node_id":81871,"status":"active","src_port":null,"dst_port":null,"detail":{"compression":"MPEG4","definition":"HD","bitrate":null,"program_id":1,"sdt_name":null,"compression":{"compression":"MPEG4","description":"MPEG4"},"definition":{"definition":"HD","description":"High Definition"},"ts_type":null},"routing_type":{"routing_type_id":1,"routing_type":"Multicast"}},{"link_id":59711,"cost":40,"src_node_id":70868,"dst_node_id":84559,"status":"active","src_port":null,"dst_port":null,"detail":{"compression":"MPEG4","definition":"HD","bitrate":null,"program_id":1,"sdt_name":null,"compression":{"compression":"MPEG4","description":"MPEG4"},"definition":{"definition":"HD","description":"High Definition"},"ts_type":null},"routing_type":{"routing_type_id":1,"routing_type":"Multicast"}},{"link_id":64835,"cost":100,"src_node_id":76201,"dst_node_id":84496,"status":"active","src_port":null,"dst_port":null,"detail":{"compression":"MPEG4","definition":"HD","bitrate":null,"program_id":1,"sdt_name":null,"compression":{"compression":"MPEG4","description":"MPEG4"},"definition":{"definition":"HD","description":"High Definition"},"ts_type":null},"routing_type":{"routing_type_id":1,"routing_type":"Multicast"}},{"link_id":66641,"cost":100,"src_node_id":84496,"dst_node_id":70868,"status":"active","src_port":null,"dst_port":null,"detail":{"compression":"MPEG4","definition":"HD","bitrate":null,"program_id":1,"sdt_name":null,"compression":{"compression":"MPEG4","description":"MPEG4"},"definition":{"definition":"HD","description":"High Definition"},"ts_type":null},"routing_type":{"routing_type_id":1,"routing_type":"Multicast"}},{"link_id":68984,"cost":510,"src_node_id":81870,"dst_node_id":74044,"status":"active","src_port":null,"dst_port":null,"detail":{"compression":"MPEG4","definition":"HD","bitrate":null,"program_id":1,"sdt_name":null,"compression":{"compression":"MPEG4","description":"MPEG4"},"definition":{"definition":"HD","description":"High Definition"},"ts_type":null},"routing_type":{"routing_type_id":1,"routing_type":"Multicast"}},{"link_id":68985,"cost":510,"src_node_id":81870,"dst_node_id":73955,"status":"active","src_port":null,"dst_port":null,"detail":{"compression":"MPEG4","definition":"HD","bitrate":null,"program_id":1,"sdt_name":null,"compression":{"compression":"MPEG4","description":"MPEG4"},"definition":{"definition":"HD","description":"High Definition"},"ts_type":null},"routing_type":{"routing_type_id":1,"routing_type":"Multicast"}},{"link_id":68986,"cost":500,"src_node_id":81871,"dst_node_id":74044,"status":"active","src_port":null,"dst_port":null,"detail":{"compression":"MPEG4","definition":"HD","bitrate":null,"program_id":1,"sdt_name":null,"compression":{"compression":"MPEG4","description":"MPEG4"},"definition":{"definition":"HD","description":"High Definition"},"ts_type":null},"routing_type":{"routing_type_id":1,"routing_type":"Multicast"}},{"link_id":68987,"cost":500,"src_node_id":81871,"dst_node_id":73955,"status":"active","src_port":null,"dst_port":null,"detail":{"compression":"MPEG4","definition":"HD","bitrate":null,"program_id":1,"sdt_name":null,"compression":{"compression":"MPEG4","description":"MPEG4"},"definition":{"definition":"HD","description":"High Definition"},"ts_type":null},"routing_type":{"routing_type_id":1,"routing_type":"Multicast"}}]}]}
+
+    var nodes = null;
+    var edges = null;
+    var network = null;
+
+    var hiddenNodes = [];
+    var hiddenDevices = ['Multicast Group'];
+
+    var DIR = 'img/refresh-cl/';
+    var EDGE_LENGTH_MAIN = 350;
+    var EDGE_LENGTH_SUB = 170;
+
+    // Called when the Visualization API is loaded.
+    function draw(options) {
+      var options = options || {}
+      // Create a data table with links.
+      edges = [];
+      var temp_nodes = [];
+      $.each(json.data[0].links, function(i, item) {
+          var arr = [item.src_node_id, item.dst_node_id]
+          var color = 'black'
+          var dashes = false
+          if(item.status != 'active') {
+            color = 'red'
+            dashes = true
+          }
+          edges.push({from: item.src_node_id, to: item.dst_node_id, arrows:'to', color: color, dashes: dashes, length: EDGE_LENGTH_MAIN});
+
+          temp_nodes.push(item.src_node_id)
+          temp_nodes.push(item.dst_node_id)
+      });
+
+      // Create a data table with nodes.
+      nodes = [];
+      var i = 0;
+      $.each(json.data[0].nodes, function(i, item) {
+          //graphJSON.nodes.push(item.node_id)
+          var type = item.device || item.service;
+          //var name = type.device_name || type.service_name;
+          var name = type.device_roles || 'Multicast Group';
+          var img = name
+          var info = name
+          if(name != 'Multicast Group') {
+            if(name[0]) {
+            name = name[0].device_role
+            }
+            else {
+              name = 'none'
+            }
+            img = name
+            info = type.device_name
+          }
+          else {
+            img = name
+            name = item.multicast_group.multicast
+
+          }
+          name = name.replace(' ', ' ');
+          if(name != 'Packager') {
+            name = name.replace(' ', ' ') + '\n('+info+')';
+          }
+          else {
+            //name = info.replace(' ', ' ') + '\n('+name+')';
+            name = name.replace(' ', ' ') + '\n('+info+')';
+          }
+          var hidden = false;
+          if(temp_nodes.indexOf(item.node_id)<0 || hiddenNodes.indexOf(item.node_id)>-1) {
+            hidden = true;
+          }
+          var obj = {id: item.node_id, label: name, image: DIR + img + '.png', hidden: hidden, title: info, shape: 'image'}
+          if(i==9) {
+            nodes.push({id: 1, label: 'None', image: DIR + img + '.png', hidden:true, title: info, shape: 'image'})
+            i = 0;
+          }
+
+          //check if node needs to be hidden or not by the level filter
+          if(hiddenNodes.indexOf(item.node_id)<0) {
+            nodes.push(obj);
+          }
+      });
+
+      // create a network
+      var container = document.getElementById('mynetwork');
+      var data = {
+        nodes: nodes,
+        edges: edges
+      };
+      var options = {
+        /*configure: {
+          filter: 'nodes,edges'
+        },*/
+        layout:{
+        //improvedLayout: true,
+        //randomSeed: 6,
+        hierarchical: { levelSeparation: options.separation || 300,
+                        sortMethod: 'directed',
+                        direction: options.direction || 'LR'
+                    }},
+        nodes: {
+          size:32,
+        color: {
+            border: '#222222',
+            background: '#666666'
+          },
+          font:{color:'#000'}
+        },
+        edges: {
+          /*color: '#AC53C9'*/
+        }
+      };
+      network = new vis.Network(container, data, options);
+      //console.log(network)
+      //console.log(network.layoutEngine.hierarchicalLevels)
+
+      //determine value of levels
+      var obj = network.layoutEngine.hierarchicalLevels;
+      var arr = Object.keys( obj ).map(function ( key ) { return obj[key]; });
+      var min = Math.min.apply( null, arr );
+      var max = Math.max.apply( null, arr );
+
+      if(!init) {
+        //prepare html for dropdown
+        var selectHTML = '';
+        for(i = max; i > 0; i = i - 1) {
+          selectHTML+= "<option value='"+i+"'>Level: "+i+"</option>";
+        }
+        //add options to dropdown
+        init = 1
+        net = network.layoutEngine.hierarchicalLevels;
+        $('#options').html(selectHTML)
+
+        //make function for dropdown
+        $("#blue").change(function() {
+          hiddenNodes = []
+          var val = $(this).val();
+          for (var key in net) {
+            var obj = net[key];
+            if(obj > val){
+              hiddenNodes.push(parseInt(key))
+            }
+          }
+          draw()
+        });
+
+        $("#blue2").change(function() {
+          hiddenDevices = []
+          var val = $(this).val();
+          console.log(val)
+          draw()
+        });
+
+      }
+    }
+  </script>
+
+  <body onload="draw()" style="margin:0px;">
+  <div id="mynetwork"></div>
+  <div id="controls"><img src="img/rotate.png" id="rotation" width="36px">
+    <select id="blue">
+      <optgroup label="Limitation" id="options">
+      </optgroup>
+    </select>
+    <select id="blue2">
+      <optgroup label="Hidden Devices" id="options2">
+        <option value="">All Visible
+        <option value="Source">Source
+        <option value="Encoder">Encoder
+        <option value="Multicast Group">Multicast
+        <option value="Packager">Packager
+      </optgroup>
+    </select>
+  </div>
+
+  <script>
+
+  var direction = 'LR';
+  var separation = 300;
+  $('#rotation').click(function() {
+    if(direction == 'LR') {
+      this.src = 'img/rotate-2.png';
+      separation = 150;
+      direction = 'UD'
+    }
+    else {
+      this.src = 'img/rotate.png';
+      separation = 300;
+      direction = 'LR'
+    }
+    var options = {
+      direction: direction,
+      separation: separation
+    }
+    draw(options)
+  })
+
+  </script>
+
+  </body>
+</html>

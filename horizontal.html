@@ -74,7 +74,7 @@
           }
           var obj = {id: item.node_id, label: name, image: DIR + img + '.png', title: info, shape: 'image'}
           nodes.push(obj);
-      });    
+      });
 
       $.each(json.data[0].links, function(i, item) {
           var arr = [item.src_node_id, item.dst_node_id]
@@ -131,7 +131,7 @@
         improvedLayout: true,
         randomSeed:16,
         hierarchical: { levelSeparation: 300,
-                        sortMethod: 'directed',          
+                        sortMethod: 'directed',
                         direction: 'LR'
                     }},
         nodes: {
